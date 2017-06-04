@@ -5,9 +5,8 @@
 #ifndef _LANGUAGE_H_
 #define _LANGUAGE_H_
 
-typedef char LANGUAGE;
+//typedef char LANGUAGE;
 
-#define VOICE_SEMANTIC_LANGUAGE_SET(DST, SRC) do{ strcpy((DST), (SRC)); }while(0)
 
 typedef enum {
     VOICE_SEMANTIC_LANGUAGE_TYPE_NONE,
@@ -21,4 +20,18 @@ typedef enum {
     VOICE_SEMANTIC_ERROR = -1,
     VOICE_SEMANTIC_OK = 0
 } VOICE_SEMANTIC_STATUS;
+
+
+class LANGUAGE {
+
+private:
+    char data[1024];
+
+public:
+    LANGUAGE(){}
+    ~LANGUAGE(){}
+};
+
+#define VOICE_SEMANTIC_LANGUAGE_SET(DST, SRC) do{ (DST) = (SRC); }while(0)
+
 #endif /* _LANGUAGE_H_ */
