@@ -13,6 +13,7 @@ class CSyntax {
 private:
     CMetaData _root;
     CAction   _action;
+    int _timeout;
 
 public:
     CSyntax();
@@ -21,6 +22,8 @@ public:
 public:
     int Init(void);
     int BuildSyntaxTree(void);
+    int TimeOut(int ms);
+    int Parse(LANGUAGE* data);
 };
 
 #endif /* _VOICE_SYNTAX_H_ */
