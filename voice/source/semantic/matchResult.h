@@ -18,10 +18,11 @@ private:
 
 public:
     CMatchResult(CToken* token, int start);
+    CMatchResult(CMatchResult& res);
     ~CMatchResult();
 
     bool operator<(CMatchResult& res);
-    CMatchResult operator=(CMatchResult& res);
+    
 };
 
 #endif /* _CMATCH_RESULT_H_ */

@@ -37,8 +37,11 @@ int CMetaData::MatchChild(CSentence& data, CAction& action)
 
 int CMetaData::MatchBrother(CSentence& data, CAction& action)
 {
+	CMatchResult current(NULL, -1);
+	CMatchResult best(NULL, -1);
     const CMetaData* cur = NULL;
 
+	//
 }
 
 int CMetaData::Match(CSentence& data, CAction& action)
