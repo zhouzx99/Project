@@ -9,6 +9,7 @@ CAction::CAction()
 {
     _status = VOICE_ACTION_STATUS_NONE;
     _list[VOICE_ACTION_STATUS_MAX] = {NULL};
+    _current = NULL;
 }
 
 CAction::~CAction()

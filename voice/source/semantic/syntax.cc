@@ -38,13 +38,13 @@ int CSyntax::TimeOut(int ms)
     return VOICE_SEMANTIC_OK;
 }
 
-int CSyntax::Parse(LANGUAGE* data)
+int CSyntax::Parse(CSentence& data)
 {
     VOICE_SEMANTIC_STATUS ret = VOICE_SEMANTIC_ERROR;
     ret = _root.Match(data, _action);
     if (ret == VOICE_SEMANTIC_OK 
-	    && _action.Status() == VOICE_ACTION_STATUS_FINISH) {
-	ret = _action.ActionCmd();
+        && _action.Status() == VOICE_ACTION_STATUS_FINISH) {
+        ret = _action.ActionCmd();
     }
     return ret;
 }

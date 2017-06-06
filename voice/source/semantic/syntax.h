@@ -23,7 +23,7 @@ public:
     int Init(void);
     int BuildSyntaxTree(void);
     int TimeOut(int ms);
-    int Parse(LANGUAGE* data);
+    int Parse(CSentence& data);
 };
 
 #endif /* _VOICE_SYNTAX_H_ */

@@ -25,6 +25,7 @@ class CAction {
 private:
     LANGUAGE* _list[VOICE_ACTION_STATUS_MAX];
     VOICE_ACTION_STATUS _status;
+    CMetaData* _current;
 
 public:
     CAction();

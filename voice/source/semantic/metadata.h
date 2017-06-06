@@ -8,6 +8,7 @@
 
 #include "matchList.h"
 #include "action.h"
+#include "sentence.h"
 
 class CMetaData {
 
@@ -23,7 +24,7 @@ public:
     ~CMetaData();
 
 public:
-    int Match(LANGUAGE* data, CAction& action);
+    int Match(CSentence& data, CAction& action);
 };
 
 #endif /* _VOICE_METADATA_H_ */

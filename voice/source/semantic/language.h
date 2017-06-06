@@ -27,11 +27,14 @@ typedef enum {
 class LANGUAGE {
 
 private:
-    char data[1024];
+    char _data[1024];
 
 public:
     LANGUAGE(){}
     ~LANGUAGE(){}
+
+public:
+    int Compare(LANGUAGE& src, int start = 0);
 };
 
 #define VOICE_SEMANTIC_LANGUAGE_SET(DST, SRC) do{ (DST) = (SRC); }while(0)

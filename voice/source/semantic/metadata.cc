@@ -18,11 +18,36 @@ CMetaData::~CMetaData()
 {
 }
 
-int CMetaData::Match(LANGUAGE* data, CAction& action)
+const CMetaData* CMetaData::Brother(void)
+{
+    return _brother;
+}
+
+int CMetaData::MatchToken(CSentence& data)
+{
+    return _list.Match(CSentence & data);
+}
+
+int CMetaData::MatchChild(CSentence& data, CAction& action)
 {
     if (_child == NULL) return VOICE_SEMANTIC_OK;
 
-    
+    return _child->Match(data, action);
+}
+
+int CMetaData::MatchBrother(CSentence& data, CAction& action)
+{
+    const CMetaData* cur = NULL;
+
+}
+
+int CMetaData::Match(CSentence& data, CAction& action)
+{
+    if (_child == NULL) return VOICE_SEMANTIC_OK;
+
+    if (_brother != NULL) {
+        //
+    }
 }
 
 

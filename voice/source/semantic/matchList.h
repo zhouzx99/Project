@@ -10,12 +10,15 @@
 
 class CMatchList {
 private:
-    CToken _list[32];
+    CToken _list[32]; /* first match long token */
     VOICE_SEMANTIC_LANGUAGE_TYPE _type;
 
 public:
     CMatchList(){}
     ~CMatchList(){}
+
+public:
+    CMatchResult MatchToken(CSentence& data);
 };
 
 #endif /* _MATCH_LIST_H_ */
