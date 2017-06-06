@@ -19,8 +19,8 @@ private:
     CMetaData* _child;
 
 public:
-    CMetaData(){}
-    ~CMetaData(){}
+    CMetaData();
+    ~CMetaData();
 
 public:
     int Match(LANGUAGE* data, CAction& action);
