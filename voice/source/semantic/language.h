@@ -28,12 +28,14 @@ class LANGUAGE {
 
 private:
     char _data[1024];
+    unsigned int _length;
 
 public:
     LANGUAGE(){}
     ~LANGUAGE(){}
 
 public:
+    unsigned int Length(){ return _length; }
     int Compare(LANGUAGE& src, int start = 0);
 };
 

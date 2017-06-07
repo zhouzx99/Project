@@ -7,9 +7,9 @@
 
 CAction::CAction()
 {
-    _status = VOICE_ACTION_STATUS_NONE;
-    _list[VOICE_ACTION_STATUS_MAX] = {NULL};
-    _current = NULL;
+    _list[VOICE_ACTION_STATUS_MAX] = { CMatchResult() };
+    _completed = false;
+    _counts = 0;
 }
 
 CAction::~CAction()
@@ -21,51 +21,48 @@ int CAction::Init(void)
     return VOICE_SEMANTIC_OK;
 }
 
-VOICE_ACTION_STATUS CAction::Status(void)
+void CAction::MatchCompleted(bool status)
 {
-    return _status;
+    _completed = status;
 }
 
-int CAction::ChangeStatus(VOICE_ACTION_STATUS status)
+bool CAction::CompletionStatus(void)
 {
-    if (status > VOICE_ACTION_STATUS_ERROR && status < VOICE_ACTION_STATUS_MAX) {
-	_status = status;
-	return VOICE_SEMANTIC_OK;
+    return _completed;
+}
+
+int CAction::AddMatchResult(CMatchResult& result)
+{
+    if (result.Result()) {
+        _list[_counts++] = result;
+        return VOICE_SEMANTIC_OK;
     }
     return VOICE_SEMANTIC_ERROR;
 }
 
-int CAction::PushMetaData(LANGUAGE* token, VOICE_SEMANTIC_LANGUAGE_TYPE type)
+CMetaData* CAction::GetCurrentMetadata(void)
 {
-    if (token == NULL) return VOICE_SEMANTIC_ERROR;
-
-    if (type == VOICE_SEMANTIC_LANGUAGE_TYPE_ROOM) {
-	_list[VOICE_ACTION_STATUS_ROOM] = token;
-    } else if (type == VOICE_ACTION_STATUS_ACTION) {
-	_list[VOICE_ACTION_STATUS_ACTION] = token;
-    } else if (type == VOICE_SEMANTIC_LANGUAGE_TYPE_OBJ) {
-	_list[VOICE_ACTION_STATUS_OBJ] = token;
-    } else {
-	VOICE_PRINT("Error: Unknown language type %d, please check!\n", type);
-	return VOICE_SEMANTIC_ERROR;
+    if (_counts > 0) {
+        return _list[_counts - 1].GetMatchedMetadata();
     }
 
-    return VOICE_SEMANTIC_OK;
+    return NULL;
 }
 
-int CAction::ActionCmd(void)
+int CAction::GetActionCmd(void)
 {
-    if (_status == VOICE_ACTION_STATUS_FINISH) {
-	// TODO: add process for command gen
+    if (CompletionStatus()) {
+    	// TODO: add process for command gen
 
 #if 1
-	VOICE_PRINT("------------------------------------\n");
-	VOICE_PRINT("   ROOM: %s\n", _list[VOICE_ACTION_STATUS_ROOM]);
-	VOICE_PRINT(" ACTION: %s\n", _list[VOICE_ACTION_STATUS_ACTION]);
-	VOICE_PRINT(" OBJECT: %s\n", _list[VOICE_ACTION_STATUS_OBJ]);
-	VOICE_PRINT("------------------------------------\n");
+    	VOICE_PRINT("------------------------------------\n");
+        for (int i = 0; i < _counts; i++) {
+            CToken* token = _list[i].GetMatchedToken();
+            VOICE_PRINT("  Step %d: %s \n", i+1, token==NULL?"<None>":token->Value());
+        }
+    	VOICE_PRINT("------------------------------------\n");
 #endif
-	return VOICE_SEMANTIC_OK;
+    	return VOICE_SEMANTIC_OK;
     }
     return VOICE_SEMANTIC_ERROR;
 }

@@ -17,8 +17,8 @@ CMatchList::~CMatchList()
 CMatchResult CMatchList::MatchToken(CSentence& data)
 {
     int i = 0;
-	CMatchResult current(NULL, -1);
-	CMatchResult best(NULL, -1);
+	CMatchResult current();
+	CMatchResult best();
 	
 	best = current;
 	for (i = 0; i < 32; i++) {

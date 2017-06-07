@@ -23,34 +23,53 @@ const CMetaData* CMetaData::Brother(void)
     return _brother;
 }
 
-int CMetaData::MatchToken(CSentence& data)
+CMatchResult CMetaData::MatchToken(CSentence& data)
 {
-    return _list.Match(CSentence & data);
+    return CMatchResult(_list.MatchToken(data), this);
 }
 
-int CMetaData::MatchChild(CSentence& data, CAction& action)
+CMatchResult CMetaData::MatchBrother(CSentence& data)
 {
-    if (_child == NULL) return VOICE_SEMANTIC_OK;
+	CMatchResult current();
+	CMatchResult best();
+    const CMetaData* metadata = NULL;
 
-    return _child->Match(data, action);
+    best = current;
+	for (metadata = this; metadata != NULL; metadata = metadata->Brother()) {
+        current = metadata->MatchToken(data);
+        if (current < best) {
+            best = current;
+        }
+    }
+    return best;
 }
 
-int CMetaData::MatchBrother(CSentence& data, CAction& action)
+CMatchResult CMetaData::MatchChild(CSentence& data)
 {
-	CMatchResult current(NULL, -1);
-	CMatchResult best(NULL, -1);
-    const CMetaData* cur = NULL;
-
-	//
+    CMatchResult result();
+    
+    if (_child != NULL) {
+        result = _child->MatchBrother(data);
+    }
+    return result;
 }
 
 int CMetaData::Match(CSentence& data, CAction& action)
 {
-    if (_child == NULL) return VOICE_SEMANTIC_OK;
+    CMatchResult result();
 
-    if (_brother != NULL) {
-        //
+    if (_child == NULL) {
+        action.MatchCompleted(true);
+        return VOICE_SEMANTIC_OK;
     }
+
+    do {
+        result = MatchChild(data);
+        if (result.Result()) {
+            return action.AddMatchResult(result);
+        }
+    } while ();
+    return VOICE_SEMANTIC_ERROR;
 }
 
 

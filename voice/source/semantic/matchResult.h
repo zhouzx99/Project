@@ -10,17 +10,26 @@
 
 #include "token.h"
 
+class CMetaData;
+
 class CMatchResult {
 
 private:
-    CToken* _token;
-    int     _start;
+    CToken*      _token;
+    int          _start;
+    CMetaData*   _data;
 
 public:
+    CMatchResult();
     CMatchResult(CToken* token, int start);
+    CMatchResult(CMatchResult& res, CMetaData* data);
     CMatchResult(CMatchResult& res);
     ~CMatchResult();
 
+    unsigned int GetCurrentOffset();
+    CMetaData* GetMatchedMetadata();
+    CToken* GetMatchedToken();
+    bool Result(void);
     bool operator<(CMatchResult& res);
     
 };

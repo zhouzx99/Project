@@ -23,9 +23,9 @@ typedef enum {
 
 class CAction {
 private:
-    LANGUAGE* _list[VOICE_ACTION_STATUS_MAX];
-    VOICE_ACTION_STATUS _status;
-    CMetaData* _current;
+    CMatchResult _list[VOICE_ACTION_STATUS_MAX];
+    unsigned int _counts;
+    bool _completed;
 
 public:
     CAction();
@@ -33,10 +33,11 @@ public:
 
 public:
     int Init(void);
-    VOICE_ACTION_STATUS Status(void);
-    int ChangeStatus(VOICE_ACTION_STATUS status);
-    int PushMetaData(LANGUAGE* token, VOICE_SEMANTIC_LANGUAGE_TYPE type);
-    int ActionCmd(void);
+    int MatchCompleted(bool status);
+    bool CompletionStatus(void);
+    int AddMatchResult(CMatchResult& result);
+    CMetaData* GetCurrentMetadata(void);
+    int GetActionCmd(void);
 };
 
 #endif /* _VOICE_ACTION_H_ */

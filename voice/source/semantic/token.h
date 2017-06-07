@@ -22,16 +22,11 @@ public:
     CToken(){}
     ~CToken(){}
 
-    LANGUAGE* Value() { return &_value; }
-    VOICE_SEMANTIC_LANGUAGE_TYPE Type() { return _type; }
+    LANGUAGE* Value();
+    unsigned int Length();
+    VOICE_SEMANTIC_LANGUAGE_TYPE Type();
 
-    VOICE_SEMANTIC_STATUS Set(LANGUAGE* val, VOICE_SEMANTIC_LANGUAGE_TYPE type)
-    {
-        VOICE_SEMANTIC_LANGUAGE_SET(&_value, val);
-	    _type = type;
-	    return VOICE_SEMANTIC_OK;
-    }
-
+    VOICE_SEMANTIC_STATUS Set(LANGUAGE* val, VOICE_SEMANTIC_LANGUAGE_TYPE type);
     CMatchResult Match(CSentence& data);
 };
 

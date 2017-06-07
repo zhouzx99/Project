@@ -27,14 +27,18 @@ int CSentence::Reset(void)
     return VOICE_SEMANTIC_OK;
 }
 
-int CSentence::Match(CToken& token)
+int CSentence::AddMatchResult(CMatchResult& result)
 {
-    int ret = _data.Compare(token, _pos);
-    if (ret > 0) {
-        _pos += ret;
+    if (result.Result()) {
+        _pos += result.GetCurrentOffset();
         return VOICE_SEMANTIC_OK;
     }
     return VOICE_SEMANTIC_ERROR;
+}
+
+int CSentence::Match(CToken& token)
+{
+    return _data.Compare(token.Value(), _pos);
 }
 
 /* --- END --- */
