@@ -10,7 +10,9 @@
 
 #include "token.h"
 
+class CToken;
 class CMetaData;
+class CMatchResult;
 
 class CMatchResult {
 

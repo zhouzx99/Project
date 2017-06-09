@@ -8,6 +8,10 @@
 
 #include "token.h"
 
+class CToken;
+class CSentence;
+class CMatchResult;
+
 class CMatchList {
 private:
     CToken _list[32]; /* first match long token */

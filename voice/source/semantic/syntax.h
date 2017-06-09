@@ -8,6 +8,10 @@
 
 #include "metadata.h"
 
+class CMetaData;
+class CAction;
+class CSentence;
+
 class CSyntax {
 
 private:

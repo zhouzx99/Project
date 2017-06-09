@@ -20,6 +20,8 @@ typedef enum {
     VOICE_ACTION_STATUS_MAX = 5,
 } VOICE_ACTION_STATUS;
 
+class CMatchResult;
+class CMetaData;
 
 class CAction {
 private:

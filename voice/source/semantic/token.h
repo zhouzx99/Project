@@ -13,6 +13,7 @@
 #include "sentence.h"
 
 class CSentence;
+class CMatchResult;
 
 class CToken {
 

@@ -10,6 +10,10 @@
 #include "action.h"
 #include "sentence.h"
 
+class CMatchList;
+class CSentence;
+class CAction;
+
 class CMetaData {
 
 private:
