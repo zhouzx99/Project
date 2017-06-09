@@ -8,6 +8,8 @@
 
 #include "token.h"
 
+class CToken;
+
 class CSentence {
 
 private:

@@ -12,6 +12,8 @@
 #include "matchResult.h"
 #include "sentence.h"
 
+class CSentence;
+
 class CToken {
 
 private:

@@ -1,9 +1,9 @@
 /*
- * File: matadata.cc
+ * File: metadata.cc
  *
  */
 
-#include "matadata.h"
+#include "metadata.h"
 
 CMetaData::CMetaData()
 {
