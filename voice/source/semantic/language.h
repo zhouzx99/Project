@@ -31,8 +31,9 @@ private:
     unsigned int _length;
 
 public:
-    LANGUAGE(){}
-    ~LANGUAGE(){}
+    LANGUAGE();
+    LANGUAGE(const char* str);
+    ~LANGUAGE();
 
 public:
     unsigned int Length(){ return _length; }

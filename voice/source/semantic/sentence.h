@@ -16,6 +16,7 @@ private:
 
 public:
     CSentence();
+    CSentence(LANGUAGE& str);
     ~CSentence();
 
 public:

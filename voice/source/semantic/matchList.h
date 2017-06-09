@@ -14,10 +14,11 @@ private:
     VOICE_SEMANTIC_LANGUAGE_TYPE _type;
 
 public:
-    CMatchList(){}
-    ~CMatchList(){}
+    CMatchList();
+    ~CMatchList();
 
 public:
+    int AddToken(CToken& token);
     CMatchResult MatchToken(CSentence& data);
 };
 

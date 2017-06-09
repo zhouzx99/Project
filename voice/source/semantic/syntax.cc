@@ -8,7 +8,14 @@
 CSyntax::CSyntax()
 {
     _timeout = 0;
-    _root   = CMetaData();
+    _root   = NULL;
+    _action = CAction();
+}
+
+CSyntax::CSyntax(CMetaData* root)
+{
+    _timeout = 0;
+    _root   = root;
     _action = CAction();
 }
 
@@ -18,12 +25,7 @@ CSyntax::~CSyntax()
 
 int CSyntax::Init(void)
 {
-    return VOICE_SEMANTIC_OK;
-}
-
-int CSyntax::BuildSyntaxTree(void)
-{
-    return VOICE_SEMANTIC_OK;
+    return _action.Init();
 }
 
 int CSyntax::TimeOut(int ms)
@@ -42,13 +44,18 @@ int CSyntax::Parse(CSentence& data)
 {
     VOICE_SEMANTIC_STATUS ret = VOICE_SEMANTIC_ERROR;
 
-    do {
-    ret = _root.Match(data, _action);
-    if (ret == VOICE_SEMANTIC_OK 
-        && _action.Status() == VOICE_ACTION_STATUS_FINISH) {
-        ret = _action.ActionCmd();
+    if (_root == NULL) {
+        return ret;
     }
+
+    do {
+        ret = _root->Match(data, _action);
+        if (ret == VOICE_SEMANTIC_OK 
+            && _action.CompletionStatus()) {
+            ret = _action.GetActionCmd();
+        }
     } while (ret == VOICE_SEMANTIC_OK);
+
     return ret;
 }
 

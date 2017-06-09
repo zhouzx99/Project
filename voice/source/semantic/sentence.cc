@@ -12,6 +12,13 @@ CSentence::CSentence()
     _pos  = 0;
 }
 
+CSentence::CSentence(LANGUAGE& str)
+{
+    _data = str;
+    _pos  = 0;
+}
+
+
 CSentence::~CSentence()
 {
 }

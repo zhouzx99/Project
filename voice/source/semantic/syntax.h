@@ -11,17 +11,17 @@
 class CSyntax {
 
 private:
-    CMetaData _root;
+    CMetaData* _root;
     CAction   _action;
     int _timeout;
 
 public:
     CSyntax();
+    CSyntax(CMetaData* root);
     ~CSyntax();
 
 public:
     int Init(void);
-    int BuildSyntaxTree(void);
     int TimeOut(int ms);
     int Parse(CSentence& data);
 };

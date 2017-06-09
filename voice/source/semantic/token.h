@@ -19,8 +19,8 @@ private:
     VOICE_SEMANTIC_LANGUAGE_TYPE _type;
 
 public:
-    CToken(){}
-    ~CToken(){}
+    CToken();
+    ~CToken();
 
     LANGUAGE* Value();
     unsigned int Length();

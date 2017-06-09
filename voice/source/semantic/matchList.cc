@@ -14,6 +14,10 @@ CMatchList::~CMatchList()
 {
 }
 
+int CMatchList::AddToken(CToken& token)
+{
+}
+
 CMatchResult CMatchList::MatchToken(CSentence& data)
 {
     int i = 0;
