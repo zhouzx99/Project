@@ -33,6 +33,13 @@ CMatchResult::CMatchResult(CMatchResult& res)
     _data  = res._data;
 }
 
+CMatchResult::CMatchResult(const CMatchResult& res)
+{
+    _token = res._token;
+    _start = res._start;
+    _data  = res._data;
+}
+
 CMatchResult::~CMatchResult()
 {
 }

@@ -25,7 +25,8 @@ public:
     CMatchResult();
     CMatchResult(CToken* token, int start);
     CMatchResult(CMatchResult res, CMetaData* data);
-    CMatchResult(CMatchResult& res);
+    CMatchResult(CMatchResult res);
+    CMatchResult(const CMatchResult& res);
     ~CMatchResult();
 
     unsigned int GetCurrentOffset();
