@@ -21,8 +21,8 @@ int CMatchList::AddToken(CToken& token)
 CMatchResult CMatchList::MatchToken(CSentence& data)
 {
     int i = 0;
-	CMatchResult current();
-	CMatchResult best();
+	CMatchResult current;
+	CMatchResult best;
 	
 	best = current;
 	for (i = 0; i < 32; i++) {

@@ -5,6 +5,8 @@
 #ifndef _LANGUAGE_H_
 #define _LANGUAGE_H_
 
+#include <iostream>
+
 //typedef char LANGUAGE;
 
 #define VOICE_PRINT printf
@@ -36,6 +38,7 @@ public:
     ~LANGUAGE();
 
 public:
+    const char* c_str() {return _data; }
     unsigned int Length(){ return _length; }
     int Compare(LANGUAGE& src, int start = 0);
 };

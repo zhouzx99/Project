@@ -7,7 +7,7 @@
 
 CAction::CAction()
 {
-    _list[VOICE_ACTION_STATUS_MAX] = { CMatchResult() };
+//    _list[VOICE_ACTION_STATUS_MAX] = { CMatchResult() };
     _completed = false;
     _counts = 0;
 }
@@ -58,7 +58,7 @@ int CAction::GetActionCmd(void)
     	VOICE_PRINT("------------------------------------\n");
         for (int i = 0; i < _counts; i++) {
             CToken* token = _list[i].GetMatchedToken();
-            VOICE_PRINT("  Step %d: %s \n", i+1, token==NULL?"<None>":token->Value());
+            VOICE_PRINT("  Step %d: %s \n", i+1, token==NULL?"<None>":token->Value()->c_str());
         }
     	VOICE_PRINT("------------------------------------\n");
 #endif

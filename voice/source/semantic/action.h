@@ -35,7 +35,7 @@ public:
 
 public:
     int Init(void);
-    int MatchCompleted(bool status);
+    void MatchCompleted(bool status);
     bool CompletionStatus(void);
     int AddMatchResult(CMatchResult& result);
     CMetaData* GetCurrentMetadata(void);

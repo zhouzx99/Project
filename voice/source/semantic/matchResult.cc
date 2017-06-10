@@ -19,18 +19,17 @@ CMatchResult::CMatchResult(CToken* token, int start)
     _data  = NULL;
 }
 
-CMatchResult::CMatchResult(CMatchResult& res, CMetaData* data)
+CMatchResult::CMatchResult(CMatchResult res, CMetaData* data)
 {
     _token = res._token;
     _start = res._start;
     _data  = data;
 }
 
-
 CMatchResult::CMatchResult(CMatchResult& res)
 {
-	_token = res._token;
-	_start = res._start;
+    _token = res._token;
+    _start = res._start;
     _data  = res._data;
 }
 

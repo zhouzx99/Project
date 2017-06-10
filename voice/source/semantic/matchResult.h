@@ -24,7 +24,7 @@ private:
 public:
     CMatchResult();
     CMatchResult(CToken* token, int start);
-    CMatchResult(CMatchResult& res, CMetaData* data);
+    CMatchResult(CMatchResult res, CMetaData* data);
     CMatchResult(CMatchResult& res);
     ~CMatchResult();
 

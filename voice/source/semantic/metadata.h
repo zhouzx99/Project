@@ -10,6 +10,7 @@
 #include "action.h"
 #include "sentence.h"
 
+class CMatchResult;
 class CMatchList;
 class CSentence;
 class CAction;
@@ -29,6 +30,10 @@ public:
 
 public:
     int Match(CSentence& data, CAction& action);
+    CMetaData* Brother(void);
+    CMatchResult MatchToken(CSentence& data);
+    CMatchResult MatchBrother(CSentence& data);
+    CMatchResult MatchChild(CSentence& data);
 };
 
 #endif /* _VOICE_METADATA_H_ */

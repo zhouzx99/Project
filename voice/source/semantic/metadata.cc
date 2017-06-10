@@ -18,7 +18,7 @@ CMetaData::~CMetaData()
 {
 }
 
-const CMetaData* CMetaData::Brother(void)
+CMetaData* CMetaData::Brother(void)
 {
     return _brother;
 }
@@ -30,9 +30,9 @@ CMatchResult CMetaData::MatchToken(CSentence& data)
 
 CMatchResult CMetaData::MatchBrother(CSentence& data)
 {
-	CMatchResult current();
-	CMatchResult best();
-    const CMetaData* metadata = NULL;
+    CMatchResult current();
+    CMatchResult best();
+    CMetaData* metadata = NULL;
 
     best = current;
 	for (metadata = this; metadata != NULL; metadata = metadata->Brother()) {
