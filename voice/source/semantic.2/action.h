@@ -7,6 +7,8 @@
 #ifndef _VOICE_ACTION_H_
 #define _VOICE_ACTION_H_
 
+typedef struct _Token Token;
+
 typedef struct _Action {
     bool valid;
     Token* list[VOICE_ACTION_TOKEN_MAX_LEN];

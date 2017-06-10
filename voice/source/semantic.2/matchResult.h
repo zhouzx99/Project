@@ -10,6 +10,9 @@
 
 #include "platform.h"
 
+typedef struct _Token Token;
+typedef struct _MetaNode MetaNode;
+
 typedef enum {
     MATCH_RESULT_ERROR      = -2,
     MATCH_RESULT_A_BETTER_B = -1,
