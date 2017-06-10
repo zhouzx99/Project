@@ -51,10 +51,12 @@ int voice_syntax_init(Syntax* syntax)
     }
 
     if (voice_meta_tree_init(&(syntax->tree)) != STATUS_SUCCESS) {
+        voice_log_error("Syntax Meta tree init failed!\n");
         return STATUS_FAILED;
     }
 
     if (voice_engine_init(&(syntax->engine)) != STATUS_SUCCESS) {
+        voice_log_error("Syntax engine init failed!\n");
         return STATUS_FAILED;
     }
 
