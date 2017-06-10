@@ -21,14 +21,17 @@ int main(int argc, const char* argv[])
 int voice_init(Sentence* sentence, Action* action, Syntax* syntax)
 {
     if (voice_sentence_init(sentence) != STATUS_SUCCESS) {
+        voice_log_error("Voice sentence init failed!\n");
         return STATUS_FAILED;
     }
 
     if (voice_action_init(action) != STATUS_SUCCESS) {
+        voice_log_error("Voice action init failed!\n");
         return STATUS_FAILED;
     }
 
     if (voice_syntax_init(syntax) != STATUS_SUCCESS) {
+        voice_log_error("Voice syntax init failed!\n");
         return STATUS_FAILED;
     }
 
@@ -43,6 +46,7 @@ int main(int argc, const char* argv[])
     Action action;
     Syntax syntax;
 
+    voice_log_debug("Voice semantic app start...\n");
     if (voice_init(&line, &action, &syntax) == STATUS_SUCCESS) {
 
         if (voice_sentence_set_data(&line, data) != STATUS_SUCCESS) {
@@ -58,6 +62,7 @@ int main(int argc, const char* argv[])
         }
     }
 
+    voice_log_debug("Voice semantic app stop...\n");
     return STATUS_FAILED;
 }
 
