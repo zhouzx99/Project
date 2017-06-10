@@ -15,7 +15,7 @@ AR := ar -r
 
 # For LD...
 #
-LD := ld
+LD := gcc -shared
 
 # For make
 #

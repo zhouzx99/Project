@@ -9,6 +9,7 @@
 
 #include "platform.h"
 #include "matchResult.h"
+#include "sentence.h"
 
 typedef enum {
     TOKEN_TYPE_ERROR = -1,

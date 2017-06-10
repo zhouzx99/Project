@@ -7,8 +7,7 @@
 #ifndef _VOICE_ACTION_H_
 #define _VOICE_ACTION_H_
 
-#include "platform.h"
-#include "sentence.h"
+#include "token.h"
 
 typedef struct _Token Token;
 

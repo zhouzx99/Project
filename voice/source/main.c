@@ -43,7 +43,7 @@ int main(int argc, const char* argv[])
     Action action;
     Syntax syntax;
 
-    if (voice_init(&action, &syntax) == STATUS_SUCCESS) {
+    if (voice_init(&line, &action, &syntax) == STATUS_SUCCESS) {
 
         if (voice_sentence_set_data(&line, data) != STATUS_SUCCESS) {
             voice_log_error("Set sentence data failed!\n");
