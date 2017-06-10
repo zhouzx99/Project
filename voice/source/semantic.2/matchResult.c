@@ -101,7 +101,7 @@ int voice_match_result_copy(MatchResult* dst, MatchResult* src)
 
 int voice_match_result_init(MatchResult* result)
 {
-    if (result != NULL) {
+    if (result == NULL) {
         return STATUS_FAILED;
     }
 

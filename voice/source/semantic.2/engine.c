@@ -110,7 +110,7 @@ int voice_engine_reset(Engine* engine)
 
 int voice_engine_init(Engine* engine)
 {
-    if (engine != NULL) {
+    if (engine == NULL) {
         return STATUS_FAILED;
     }
 
