@@ -7,6 +7,7 @@
 #define _VOICE_PLATFORM_H_
 
 #include <stdio.h>
+#include <string.h>
 
 /* the max size of token list in meta node */
 #define VOICE_META_NODE_TOKEN_MAX_SIZE 64
@@ -23,6 +24,10 @@
 /* the max size of data in Sentence */
 #define VOICE_SENTENCE_DATA_MAX_SIZE 2048
 
+typedef enum {
+    FALSE = 0,
+    TRUE = 1,
+} BOOL;
 
 typedef enum {
     STATUS_FAILED = -1,

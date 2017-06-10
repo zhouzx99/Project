@@ -63,12 +63,12 @@ int voice_meta_node_match_child(MetaNode* node, Sentence* sentence, MatchResult*
     return STATUS_SUCCESS;
 }
 
-bool voice_meta_node_has_child(MetaNode* node)
+BOOL voice_meta_node_has_child(MetaNode* node)
 {
     if (node != NULL && node->child != NULL) {
-        return true;
+        return TRUE;
     }
-    return false;
+    return FALSE;
 }
 
 int voice_meta_node_add_child(MetaNode* node, MetaNode* child)

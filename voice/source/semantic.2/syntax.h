@@ -9,6 +9,7 @@
 #include "sentence.h"
 #include "action.h"
 #include "metaTree.h"
+#include "engine.h"
 
 typedef struct _Syntax {
     MetaTree tree;

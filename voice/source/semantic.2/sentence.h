@@ -17,6 +17,7 @@ typedef struct _Sentence {
 int voice_sentence_init(Sentence* sentence);
 int voice_sentence_set_data(Sentence* sentence, const char* data);
 const char* voice_sentence_get_data(Sentence* sentence);
+int voice_sentence_set_offset(Sentence* sentence, unsigned int offset);
 
 
 #endif /* _VOICE_SENTENCE_H_ */

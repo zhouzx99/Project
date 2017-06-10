@@ -4,7 +4,8 @@
  *
  ***/
  
- #include "action.h"
+#include "token.h"
+#include "action.h"
 
 
 int voice_action_generate_result(Action* action)

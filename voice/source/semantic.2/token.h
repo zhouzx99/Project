@@ -8,6 +8,7 @@
 #define _CTOKEN_H_
 
 #include "platform.h"
+#include "matchResult.h"
 
 typedef enum {
     TOKEN_TYPE_ERROR = -1,

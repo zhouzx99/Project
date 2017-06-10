@@ -13,14 +13,16 @@ STATIC_LIBS  := $(addprefix lib,$(addsuffix .a,$(LIBS)))
 # Dynamic Lib
 DYNAMIC_LIBS := $(addprefix lib,$(addsuffix .so,$(LIBS)))
 
-LIB_SRCS     = $(wildcard semantic/*.cc)
-LIB_HDRS     = $(PROJ_DIR) $(PROJ_DIR)/semantic
+#LIB_CXXSRCS     = $(wildcard semantic/*.cc)
+#LIB_HDRS     = $(PROJ_DIR) $(PROJ_DIR)/semantic
+LIB_CSRCS     = $(wildcard semantic.2/*.c)
+LIB_HDRS     = $(PROJ_DIR) $(PROJ_DIR)/semantic.2
 LIB_CFLAGS   = 
 LIB_CXXFLAGS = 
 LIB_LDFLAGS  = 
 LIB_LIBS     =
 
-LIB_OBJS     = $(LIB_SRCS:%.cc=%.o)
+LIB_OBJS     = $(LIB_CXXSRCS:%.cc=%.o) $(LIB_CSRCS:%.c=%.o)
 LIB_LDLIBS   = $(addprefix -l ,$(LIB_LIBS))
 
 CXXFLAGS += -std=gnu++0x $(LIB_CXXFLAGS) $(addprefix -I,$(LIB_HDRS))
@@ -36,14 +38,14 @@ $(LIBS) : $(STATIC_LIBS) $(DYNAMIC_LIBS)
 
 BINS := debug
 
-BIN_SRCS     = main.c
+BIN_CSRCS     = main.c
 BIN_HDRS     = 
 BIN_CFLAGS   = 
 BIN_CXXFLAGS = 
 BIN_LDFLAGS  = 
 BIN_LIBS     =
 
-BIN_OBJS     = $(BIN_SRCS:%.c=%.o)
+BIN_OBJS     = $(BIN_CSRCS:%.c=%.o)
 BIN_LDLIBS   = $(addprefix -l ,$(BIN_LIBS))
 
 CXXFLAGS += $(BIN_CXXFLAGS) $(addprefix -I,$(BIN_HDRS))

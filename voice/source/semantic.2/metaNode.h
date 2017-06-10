@@ -6,7 +6,10 @@
 #ifndef _VOICE_META_NODE_H_
 #define _VOICE_META_NODE_H_
 
+#include "sentence.h"
 #include "token.h"
+#include "matchResult.h"
+
 
 typedef struct _MetaNode
 {
@@ -19,9 +22,9 @@ typedef struct _MetaNode
 } MetaNode;
 
 int voice_meta_node_init(MetaNode* node);
-int voice_meta_node_match_child(MetaNode* node, Sentence* sentence);
+int voice_meta_node_match_child(MetaNode* node, Sentence* sentence, MatchResult* result);
 
-bool voice_meta_node_has_child(MetaNode* node);
+BOOL voice_meta_node_has_child(MetaNode* node);
 int voice_meta_node_add_child(MetaNode* node, MetaNode* child);
 int voice_meta_node_add_brother(MetaNode* node, MetaNode* brother);
 

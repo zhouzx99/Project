@@ -3,6 +3,10 @@
  *
  * */
 
+#include "sentence.h"
+#include "token.h"
+#include "action.h"
+#include "metaTree.h"
 #include "engine.h"
 
 
@@ -18,12 +22,12 @@ static int voice_engine_next_step(Engine* engine)
 
     /* if current meta node has child, continue to match next */
     if (voice_meta_node_has_child(engine->current)) {
-        return STATUS_SUCCESS
+        return STATUS_SUCCESS;
     }
 
     /* if current meta node don't have child, engine is finished */
     engine->current = NULL;
-    engine->completed = true;
+    engine->completed = TRUE;
     return STATUS_SUCCESS;
 }
 

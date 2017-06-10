@@ -11,7 +11,7 @@ CXXCPP := g++ -E
 
 # For static lib
 #
-AR := ar
+AR := ar -r
 
 # For LD...
 #
