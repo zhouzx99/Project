@@ -50,7 +50,7 @@ int voice_destroy(Syntax* syntax)
 
 int main(int argc, const char* argv[])
 {
-    char data[] = "the room please open the light";
+    char data[] = "把厨房灯打开";
     Sentence line;
     Action action;
     Syntax syntax;
