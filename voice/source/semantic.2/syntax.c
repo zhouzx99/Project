@@ -44,6 +44,15 @@ int voice_syntax_reset(Syntax* syntax)
     return voice_engine_reset(&(syntax->engine));
 }
 
+int voice_syntax_destroy(Syntax* syntax)
+{
+    if (syntax != NULL) {
+        return voice_meta_tree_destory(&(syntax->tree));
+    }
+    return STATUS_FAILED;
+}
+
+
 int voice_syntax_init(Syntax* syntax)
 {
     if (syntax == NULL) {

@@ -39,27 +39,42 @@ int voice_init(Sentence* sentence, Action* action, Syntax* syntax)
     return STATUS_SUCCESS;
 }
 
+int voice_destroy(Syntax* syntax)
+{
+    if (syntax != NULL) {
+        return voice_meta_tree_destory(&(syntax->tree));
+    }
+
+    return STATUS_FAILED;
+}
+
 int main(int argc, const char* argv[])
 {
     char data[] = "the room please open the light";
     Sentence line;
     Action action;
     Syntax syntax;
+    int ret = STATUS_FAILED;
 
     voice_log_debug("Voice semantic app start...\n");
     if (voice_init(&line, &action, &syntax) == STATUS_SUCCESS) {
 
         if (voice_sentence_set_data(&line, data) != STATUS_SUCCESS) {
             voice_log_error("Set sentence data failed!\n");
+            voice_destroy(&syntax);
             return STATUS_FAILED;
         }
 
         if (voice_syntax_parse_sentece(&syntax, &line, &action) == STATUS_SUCCESS) {
             voice_log_debug("Voice syntax parse sentence success!\n");
-            return voice_action_generate_result(&action);
+            ret = voice_action_generate_result(&action);
+            voice_destroy(&syntax);
+            return ret;
         } else {
             voice_log_debug("Voice syntax parse sentence failed!\n");
         }
+
+        voice_destroy(&syntax);
     }
 
     voice_log_debug("Voice semantic app stop...\n");

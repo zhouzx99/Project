@@ -5,6 +5,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include "metaTree.h"
 
 static MetaNode* g_meta_tree_root = NULL;
@@ -77,9 +78,14 @@ static int voice_meta_tree_build(void)
     return STATUS_SUCCESS;
 }
 
-static int voice_meta_tree_destory(MetaNode* root)
+int voice_meta_tree_destory(MetaTree* tree)
 {
     voice_meta_tree_destroy_all();
+    g_meta_tree_root = NULL;
+
+    if (tree->root != NULL) {
+        tree->root = NULL;
+    }
     return STATUS_SUCCESS;
 }
 

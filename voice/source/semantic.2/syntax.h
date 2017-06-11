@@ -18,6 +18,7 @@ typedef struct _Syntax {
 
 int voice_syntax_init(Syntax* syntax);
 int voice_syntax_reset(Syntax* syntax);
+int voice_syntax_destroy(Syntax* syntax);
 int voice_syntax_parse_sentece(Syntax* syntax, Sentence* sentence, Action* action);
 
 
