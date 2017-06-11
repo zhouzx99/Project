@@ -10,6 +10,34 @@
 #include "matchResult.h"
 #include "token.h"
 
+int voice_token_copy(Token* dst, Token* src)
+{
+    if (dst == NULL || src == NULL) {
+        voice_log_error("The input params error for token copy!\n");
+        return STATUS_FAILED;
+    }
+
+    strcpy(dst->value, src->value);
+    dst->length = src->length;
+    dst->type = src->type;
+
+    return STATUS_SUCCESS;
+}
+
+int voice_token_set(Token* token, const char* value, TOKEN_TYPE_E type)
+{
+    if (token == NULL || value == NULL || type <= TOKEN_TYPE_NONE) {
+        voice_log_error("The input params error for token set!\n");
+        return STATUS_FAILED;
+    }
+
+    strncpy(token->value, value, sizeof(token->value) - 1);
+    token->length = strlen(token->value);
+
+    token->type = type;
+
+    return STATUS_SUCCESS;
+}
 
 const char* voice_token_get_value(Token* token)
 {

@@ -24,6 +24,10 @@
 /* the max size of data in Sentence */
 #define VOICE_SENTENCE_DATA_MAX_SIZE 2048
 
+/* the max size of meta node counts in meta tree */
+#define VOICE_META_TREE_NODE_MAX_CNTS 128
+
+
 typedef enum {
     FALSE = 0,
     TRUE = 1,

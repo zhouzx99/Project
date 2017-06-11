@@ -41,7 +41,7 @@ int voice_init(Sentence* sentence, Action* action, Syntax* syntax)
 
 int main(int argc, const char* argv[])
 {
-    char data[] = "ÄãÊÇË­";
+    char data[] = "the room please open the light";
     Sentence line;
     Action action;
     Syntax syntax;

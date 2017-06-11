@@ -27,5 +27,7 @@ int voice_meta_node_match_child(MetaNode* node, Sentence* sentence, MatchResult*
 BOOL voice_meta_node_has_child(MetaNode* node);
 int voice_meta_node_add_child(MetaNode* node, MetaNode* child);
 int voice_meta_node_add_brother(MetaNode* node, MetaNode* brother);
+int voice_meta_node_add_token(MetaNode* node, Token* token);
+
 
 #endif /* _VOICE_META_NODE_H_ */

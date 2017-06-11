@@ -32,6 +32,9 @@ const char* voice_token_get_value(Token* token);
 TOKEN_TYPE_E voice_token_get_type(Token* token);
 unsigned int voice_token_get_length(Token* token);
 
+int voice_token_set(Token* token, const char* value, TOKEN_TYPE_E type);
+int voice_token_copy(Token* dst, Token* src);
+
 
 #endif /* _CTOKEN_H_ */
 

@@ -71,13 +71,50 @@ BOOL voice_meta_node_has_child(MetaNode* node)
     return FALSE;
 }
 
-int voice_meta_node_add_child(MetaNode* node, MetaNode* child)
-{
-    return STATUS_FAILED;
-}
-
 int voice_meta_node_add_brother(MetaNode* node, MetaNode* brother)
 {
+    MetaNode* brotherNode = NULL;
+
+    if (node == NULL || brother == NULL) {
+        return STATUS_FAILED;
+    }
+
+    for (brotherNode = node; brotherNode->brother != NULL;
+                    brotherNode = brotherNode->brother);
+    brotherNode->brother = brother;
+    brother->parent = brotherNode->parent;
+
+    return STATUS_SUCCESS;
+}
+
+int voice_meta_node_add_child(MetaNode* node, MetaNode* child)
+{
+    if (node == NULL || child == NULL) {
+        return STATUS_FAILED;
+    }
+
+    if (node->child == NULL) {
+        node->child = child;
+        child->parent = node;
+        return STATUS_SUCCESS;
+    } else {
+        return voice_meta_node_add_brother(node->child, child);
+    }
+}
+
+int voice_meta_node_add_token(MetaNode* node, Token* token)
+{
+    Token* current = NULL;
+
+    if (node == NULL || token == NULL) {
+        voice_log_error("the input params error for voice meta node set token!\n");
+        return STATUS_FAILED;
+    }
+
+    if (node->counts < VOICE_META_NODE_TOKEN_MAX_SIZE) {
+        current = &(node->list[node->counts++]);
+        return voice_token_copy(current, token);
+    }
     return STATUS_FAILED;
 }
 
