@@ -23,7 +23,7 @@ int voice_syntax_parse_sentece(Syntax* syntax, Sentence* sentence, Action* actio
         return STATUS_FAILED;
     }
 
-    if (voice_match_result_status(&result) != STATUS_FAILED) {
+    if (voice_match_result_status(&result) != STATUS_SUCCESS) {
         voice_log_error("Syntax engine execution result failed!\n");
         return STATUS_FAILED;
     }

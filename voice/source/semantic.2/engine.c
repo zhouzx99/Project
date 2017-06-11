@@ -55,6 +55,11 @@ int voice_engine_execute(Engine* engine, MetaTree* tree, Sentence* sentence, Mat
     }
 
     while (engine->current != NULL) {
+	if (voice_match_result_init(result) != STATUS_SUCCESS) {
+	    voice_log_error("Engine execute result init failed!\n");
+	    return STATUS_FAILED;
+	}
+
         if (voice_meta_node_match_child(engine->current, sentence, result) != STATUS_SUCCESS) {
             voice_log_error("Match node child failed!\n");
             return STATUS_FAILED;
@@ -93,7 +98,7 @@ int voice_engine_build_action(Engine* engine, Action* action)
     for (index = 0; index < engine->counts; index++) {
         token = voice_match_result_get_token(&(engine->steps[index]));
         if (token != NULL) {
-            if (voice_action_add_token(action, token) != STATUS_FAILED) {
+            if (voice_action_add_token(action, token) != STATUS_SUCCESS) {
                 voice_log_error("Add token to action failed!\n");
                 return STATUS_FAILED;
             }

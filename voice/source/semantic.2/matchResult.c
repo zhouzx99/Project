@@ -32,7 +32,7 @@ int voice_match_result_set_mete_node(MatchResult* result, MetaNode* node)
 int voice_match_result_get_offset(MatchResult* result)
 {
     if (result != NULL) {
-        return result->offset;
+        return result->offset + voice_token_get_length(result->token);
     }
     return -1;
 }

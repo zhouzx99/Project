@@ -19,7 +19,7 @@ int voice_sentence_set_data(Sentence* sentence, const char* data)
 
 int voice_sentence_set_offset(Sentence* sentence, unsigned int offset)
 {
-    if ((sentence->pos + offset) >= sentence->length) {
+    if ((sentence->pos + offset) > sentence->length) {
         voice_log_error("The offset %d is too big for senten length %d position %d\n",
                                 offset, sentence->length, sentence->pos);
         return STATUS_FAILED;
