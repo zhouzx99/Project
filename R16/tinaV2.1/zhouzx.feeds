@@ -1,0 +1,2 @@
+src-git packages https://github.com/openwrt/packages.git
+src-link custom /data/openwrt/customfeeds/packages
