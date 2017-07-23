@@ -46,7 +46,7 @@ static MetaNode* voice_meta_tree_build_room_node(void)
     Token token;
     MetaNode* node = NULL;
 
-    const char roomList[][] = {"³ø·¿", "¿ÍÌü", "ÎÔÊÒ"};
+    char roomList[][32] = {"å®¢å…", "å¨æˆ¿", "å§å®¤"};
     unsigned int roomCnts = 3;
 
     /* create the first child node */
@@ -68,7 +68,7 @@ static MetaNode* voice_meta_tree_build_opera_node(void)
     Token token;
     MetaNode* node = NULL;
 
-    const char operaList[][] = {"¿ª", "¹Ø"};
+    char operaList[][32] = {"å¼€", "å…³"};
     unsigned int operaCnts = 2;
 
     /* create the first child node */
@@ -90,7 +90,7 @@ static MetaNode* voice_meta_tree_build_object_node(void)
     Token token;
     MetaNode* node = NULL;
 
-    const char objList[][] = {"µÆ", "ËùÓĞµÆ"};
+    char objList[][32] = {"ç¯", "æ‰€æœ‰ç¯"};
     unsigned int objCnts = 2;
 
     /* create the first child node */
